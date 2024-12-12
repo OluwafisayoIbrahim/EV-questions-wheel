@@ -131,3 +131,50 @@ canvas {
     transform: scale(0.95);
 }
 
+
+@media (max-width: 768px) {
+    .wheel-container {
+        width: 350px;
+        height: 350px;
+    }
+    .arrow {
+        top: 50%;
+        right: -15px;
+    }
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .wheel-container {
+        width: 250px;
+        height: 250px;
+    }
+    .arrow {
+        top: 50%;
+        right: -10px; 
+        border-top: 15px solid #000; 
+    }
+    canvas {
+        width: 100%; 
+        height: auto;
+    }
+}
+
+@media (max-width: 320px) {
+    .wheel-container {
+        width: 200px;
+        height: 200px;
+    }
+    .arrow {
+        top: 50%;
+        right: -5px; 
+        border-top: 10px solid #000; 
+    }
+    canvas {
+        width: 100%;
+        height: auto;
+    }
+}
