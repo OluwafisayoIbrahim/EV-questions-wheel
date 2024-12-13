@@ -5,15 +5,26 @@ const questionText = document.getElementById("question");
 const closeButton = document.getElementById("close");
 const spinButton = document.getElementById("spin");
 
-
 const etiOsaBtn = document.getElementById("etiOsaBtn");
 const obalendeBtn = document.getElementById("obalendeBtn");
 const lekkiBtn = document.getElementById("lekkiBtn");
 
 const colors = [
-  "#FF5733", "#33FF57", "#5733FF", "#FF33A1", "#33FFF6",
-  "#FFAD33", "#FF3333", "#9D33FF", "#33FF9D", "#FF8833",
-  "#FFF733", "#33FF33", "#3357FF", "#FF3357", "#33FFAD"
+  "#FF5733",
+  "#33FF57",
+  "#5733FF",
+  "#FF33A1",
+  "#33FFF6",
+  "#FFAD33",
+  "#FF3333",
+  "#9D33FF",
+  "#33FF9D",
+  "#FF8833",
+  "#FFF733",
+  "#33FF33",
+  "#3357FF",
+  "#FF3357",
+  "#33FFAD",
 ];
 const radius = canvas.width / 2;
 let spinning = false;
@@ -21,44 +32,42 @@ let rotation = 0;
 let questions = {};
 let segments = 0;
 
-
 const etiOsaQuestions = {
   1: "What does 'EV' stand for?",
   2: "What’s the first thing that comes to mind when you hear ‘Electric Vehicle’?",
   3: "What is the difference between an EV and a traditional car?",
-  4: "Which is cheaper to maintain, EVs or traditional cars?",
+  4: "Which is cheaper to maintain: EVs or traditional cars?",
   5: "With petrol prices rising, would you consider an EV to save on fuel costs?",
   6: "What do you think is the biggest obstacle to EVs becoming popular in Nigeria?",
-  7: "What role can Nigerian youth play in shaping EV transportation?",
-  8: "Would you switch to an EV if charging stations were more accessible?",
-  9: "If an EV ride-hailing service was available to you would you patronize it?"
+  7: "If an EV ride-hailing service was available to you, would you patronize it?",
+  8: "What role can Nigerian youth play in shaping the future of EV transportation?",
+  9: "Would you switch to an EV if charging stations were more accessible?",
 };
 
 const obalendeQuestions = {
   1: "What does 'EV' stand for?",
-  2: "What is the difference between electric and petrol cars?",
-  3: "Which type of car has more moving parts? EV or petrol car?",
-  4: "What is cheaper to drive: an EV or a petrol car?",
-  5: "What would you do with the money saved on fuel by owning an EV?",
-  6: "Would you switch to an EV if charging stations were everywhere?",
-  7: "Do you know you can drive a car without fuel?",
-  8: "Would you like it if your Mini-BUS didn't need fuel?"
+  2: "What is the difference between electric and petrol-powered cars?",
+  3: "Do you know you can drive a car without fuel?",
+  4: "Which type of car has more moving parts: EV or petrol car?",
+  5: "What is cheaper to drive: an EV or a petrol car?",
+  6: "What would you do with the money saved on fuel by owning an EV?",
+  7: "Would you switch to an EV if charging stations were everywhere?",
+  8: "Would you like it if your Mini-BUS didn't need fuel?",
 };
 
 const lekkiQuestions = {
   1: "What does 'EV' stand for?",
   2: "Are EVs better for our environment?",
   3: "Do EVs need oil changes?",
-  4: "What is cheaper to drive from Ikeja to Victoria Island: an EV or petrol car?",
-  5: "Which type of car has fewer moving parts?",
+  4: "Which type of car has fewer moving parts?",
+  5: "What is cheaper to drive from Ikeja to Victoria Island: an EV or petrol car?",
   6: "Have you ever seen an EV charging station in Lagos?",
   7: "Where do you think EV charging stations should be located?",
   8: "What’s your biggest concern about owning an EV in Nigeria?",
-  9: "Would you consider switching to an EV?",
+  9: "If you could switch to an EV, would you and why?",
   10: "What motivates you to explore EV ownership?",
-  11: "If you could switch to an EV, would you and why?"
+  11: "Would you consider switching to an EV?",
 };
-
 
 questions = { ...etiOsaQuestions };
 segments = Object.keys(questions).length;
@@ -87,7 +96,7 @@ function drawWheel() {
 
     ctx.save();
     ctx.translate(radius, radius);
-    ctx.rotate(((startAngle + endAngle) / 2 * Math.PI) / 180);
+    ctx.rotate((((startAngle + endAngle) / 2) * Math.PI) / 180);
     ctx.textAlign = "right";
     ctx.fillStyle = "white";
     ctx.font = "bold 16px Arial";
@@ -149,7 +158,6 @@ closeButton.addEventListener("click", () => {
 
 spinButton.addEventListener("click", spinWheel);
 
-
 etiOsaBtn.addEventListener("click", () => {
   questions = { ...etiOsaQuestions };
   segments = Object.keys(questions).length;
@@ -167,6 +175,5 @@ lekkiBtn.addEventListener("click", () => {
   segments = Object.keys(questions).length;
   drawWheel();
 });
-
 
 drawWheel();
