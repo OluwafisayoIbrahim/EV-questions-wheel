@@ -112,18 +112,19 @@ function calculateSegment(rotation) {
   return (segmentIndex + 1) % segments || segments;
 }
 
+let lastSegment = null;
+
 function spinWheel() {
   if (spinning) return;
   spinning = true;
-  const spinDuration = 8000;
-  const totalRotation = Math.random() * 360 + 1440;
 
+  const spinDuration = 4000;
+  const totalRotation = Math.random() * 720 + 1440; 
   let startTime = null;
 
   function animate(currentTime) {
     if (!startTime) startTime = currentTime;
     const elapsed = currentTime - startTime;
-
     const progress = Math.min(elapsed / spinDuration, 1);
     rotation = totalRotation * (1 - Math.pow(1 - progress, 4));
 
@@ -139,6 +140,13 @@ function spinWheel() {
       requestAnimationFrame(animate);
     } else {
       const segmentNumber = calculateSegment(rotation);
+      
+      
+      if (segmentNumber === lastSegment) {
+        spinWheel();
+        return;
+      }
+      lastSegment = segmentNumber;
       showPopup(segmentNumber);
       spinning = false;
     }
@@ -146,6 +154,7 @@ function spinWheel() {
 
   requestAnimationFrame(animate);
 }
+
 
 function showPopup(segmentNumber) {
   questionText.textContent = questions[segmentNumber];
